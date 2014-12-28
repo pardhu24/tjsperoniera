@@ -102,7 +102,7 @@ body {
 			 $("#nav").hide();
 			  $("#nav_list li").hide();
             $("#show li").click(function(e) {
-				$("#nav_list li").toggle();
+				$("#nav_list li").toggle(300);
             });
         });
         
@@ -153,7 +153,8 @@ include "admin/database/update.php";
   					<div class="container">
    			<div class="collapse navbar-collapse" id="nav_menu">
      		<ul id="nav_list" class="nav navbar-nav navbar-right">
-        						
+        			<li style="font-size:35px;"><a href="https://plus.google.com/+Peroneira/posts" style="color:#777;padding:5px;"><i class="fa fa-google-plus-square"></i></a>
+<a href="https://www.facebook.com/Peroneira" style="color:#777;padding:5px;"><i class="fa fa-facebook-square"></i></a></li>			
                   <li id="aboutus" style="background:url(images/menu%20tiles/about.png) no-repeat top left; background-size:contain;"><a style="display:block;height:85px;width:85px;" href="index.php#aboutvsp"></a></li>	
                 
                                 <li class="active" style="background:url(images/menu%20tiles/project_03.png) no-repeat top left; background-size:contain;"><a style="display:block;height:85px;width:85px;"  href="index.php#Projects"></a></li>
@@ -161,7 +162,7 @@ include "admin/database/update.php";
                                 <li style="background:url(images/menu%20tiles/services_11.png) no-repeat top left; background-size:contain;"><a style="display:block;height:85px;width:85px;" href="index.php#Services"></a></li>
                                 <li style="background:url(images/menu%20tiles/gallery_06.png) no-repeat top left; background-size:contain;"><a style="display:block;height:85px;width:85px;" href="index.php#gallery"></a></li>
                               
-                                <li  style="background:url(images/menu%20tiles/contact_03.png) no-repeat top left; background-size:contain;"><a style="display:block;height:85px;width:85px;" href="index.php#contact"></a></li>
+                                <li  style="margin-left:1px; background:url(images/menu%20tiles/contact_03.png) no-repeat top left; background-size:contain;"><a style="display:block;height:85px;width:85px;" href="index.php#contact"></a></li>
      						</ul>
                             <ul id="show">
                             <li style="list-style:none;font-size:42px;cursor:pointer;"><i class="fa fa-bars"></i>

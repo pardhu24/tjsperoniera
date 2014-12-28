@@ -219,7 +219,7 @@ Architects with complete different exposures have come together to design a spac
                 
                 <!-- LOCATION, DATE&TIME, ACCOMODATION-->
                 <div class="row">
-                	<div class="col-md-6">
+                	<div class="col-md-11">
                     	<div id="location" class="box animation fadeInLeft" style="padding:8px;">
                         	<div>
                         		<!--<span class="glyphicon glyphicon-map-marker box_icon"></span>-->
@@ -232,33 +232,18 @@ Architects with complete different exposures have come together to design a spac
                                 $proobj = new Select;
                                 $projects = $proobj->selectAll("projects");
                                 for($i = 0; $i<count($projects); $i++) {
+					$ImageName=split("@@@",$projects[$i]['images']);
+                            ?> 	 <a href="projects.php?id=<?php echo $projects[$i]['tableId'] ?>" style="display:inline-block;width:16.3%;">
+                         <span style="display:block;"> <img src="admin/uploaded/gallery/<?php echo $ImageName[0] ?>"  alt="<?php echo $projects[$i]['title'] ?>" width="100%" /></span><span style="display:block;height:50px;"><?php echo $projects[$i]['title'] ?></span>
 
-                            ?> 	 <a style="display:block;" href="projects.php?id=<?php echo $projects[$i]['tableId'] ?>">
-                                                            <?php echo $projects[$i]['title'] ?>
+                                                            
                                                         </a>
                                 <?php }?>
                                
                             </div>
                     	</div>
                     </div>
-                    <div class="col-md-6">
-                    	<div id="date_time" class="box animation delay1 fadeInUp"  style="padding:8px;">
-                        	<div>
-                        		<!--<span class="glyphicon glyphicon-time box_icon"></span>-->
-                    			<span class="box_title">Category</span>
-                            </div>
-                            <div class="box_text">
-                            	   <?php
-                               
-                                for($i = 0; $i<count($projects); $i++) {
-
-                            ?> 	 <a style="display:block;" href="projects.php?id=<?php echo $projects[$i]['tableId'] ?>">
-                                                            <?php echo $projects[$i]['category'] ?>
-                                                        </a>
-                                <?php }?>
-                            </div>
-                    	</div>
-                    </div>
+                    
                     
                 </div><!-- END OF LOCATION -->
                 
