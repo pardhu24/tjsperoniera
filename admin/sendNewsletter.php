@@ -4,7 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Add New Project | The Joint Services</title>
 <?php include "externallinks.php" ?>
-
+<script src="js/rtfJs.js"></script>
+<script src="js/colorpicker.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#notifSubmit").hide();
@@ -16,8 +17,14 @@ $(document).ready(function() {
 	});	
 });
 </script>
+<style>
+.inline-form input{width:auto !important;}
+.inline-form input[button]{
+padding:3px;border:1px solid #333;background:#EEE;	width:auto !important;margin:3px !important;
+	}
+</style>
 </head>
-<body>
+<body onload="iFrameOn();">
 <div class="wrapper">
 	<header>
 		<?php include "sidebar.php"; ?>
@@ -60,7 +67,7 @@ $(document).ready(function() {
                         <?php
                             if(isset($_POST['submit'])) {
                                 //echo "Added New Row";
-                                $valuearry = array("", "", $_POST['subject'], $_POST['message'], $_POST['signature'], "", "Active", "", "", "", "");
+                                $valuearry = array("", "", $_POST['subject'], $_POST['myTextArea'], $_POST['signature'], "", "Active", "", "", "", "");
                                 Insertrow("newsletter",$valuearry);
                                 $subscription = array();
                                 $subobj = new Select;
@@ -68,7 +75,7 @@ $(document).ready(function() {
                                 for($i = 0; $i < count($subscription); $i++) {
                                     $to = $subscription[$i]['email'];
                                     $subject = $_POST['subject'];
-                                    $message = $_POST['message'];
+                                    $message = $_POST['myTextArea'];
                                     $message.= "<br/><br/>".$_POST['signature'];
                                     // Always set content-type when sending HTML email
                                     $headers = "MIME-Version: 1.0" . "\r\n";
@@ -96,22 +103,31 @@ $(document).ready(function() {
                         ?>
                     </div>
                 </div>
-                <form action="sendNewsletter.php" method="post">
+                <form action="sendNewsletter.php" method="post" id="myform">
 
                         <div class="col-md-12">
                             <div class="inline-form">
-                                <label class="c-label">Subject</label><input name="subject" class="input-style" placeholder="Subject" type="text" required>
+                                <label class="c-label">Subject</label><input name="subject" placeholder="Subject" type="text" required>
                             </div>
                         </div>
-                        <!--<div class="col-md-12">
-                            <div class="inline-form">
-                                <label class="c-label">Images</label><input name="images"  class="input-style" id="images" type="file" required>
-                            </div>
-                        </div>-->
+                       
                         <div class="col-md-12">
                             <div class="inline-form">
-                                <label class="c-label">Message</label>
-                                <textarea rows="5" name="message" required></textarea>
+              <label class="c-label">Message</label>
+<div id="wysiwyg_cp" style="padding:8px; width:700px;">
+<input type="button" onClick="iBold()" value="B">
+<input type="button" onClick="iUnderline()" value="U">
+<input type="button" onClick="iFontSize()" value="Text Size">
+<input type="text" class="color" style="width:50px;" value=" " />
+<input type="button" onClick="iForeColor()" value="Text Color">
+<input type="button" onClick="iOrderedList()" value="OL">
+<input type="button" onClick="iLink()" value="Link">
+<input type="button" onClick="iUnLink()" value="UnLink">
+</div>
+<textarea style="display:none;" name="myTextArea" id="myTextArea" cols="100" rows="14"></textarea>
+<iframe name="richTextField" id="richTextField" style="border:#CCC 1px solid; width:90%; min-height:300px; background:#FFF;"></iframe>
+</p>
+
                             </div>
                         </div>
                 
@@ -124,7 +140,7 @@ $(document).ready(function() {
                                                 
                         <div class="col-md-12">
                             <div class="inline-form">
-                        		<button name="submit" type="submit" id="submitProject" class="btn blue pull-left">Send</button>																
+                        		<button name="submit" type="submit" id="submitProject" class="btn blue pull-left" onClick="javascript:submit_form();">Send</button>																
                             </div>
                        </div>
 
