@@ -219,29 +219,33 @@ Architects with complete different exposures have come together to design a spac
                 
                 <!-- LOCATION, DATE&TIME, ACCOMODATION-->
                 <div class="row">
-                	<div class="col-md-11">
-                    	<div id="location" class="box animation fadeInLeft" style="padding:8px;">
-                        	<div>
-                        		<!--<span class="glyphicon glyphicon-map-marker box_icon"></span>-->
-                    			<span class="box_title">Projects Name</span>
-                            </div>
-                            
-                            <div class="box_text">
-                           <?php
+                	<div class="col-md-12">
+                        <?php
                                 $projects = array();
                                 $proobj = new Select;
                                 $projects = $proobj->selectAll("projects");
                                 for($i = 0; $i<count($projects); $i++) {
-					$ImageName=split("@@@",$projects[$i]['images']);
-                            ?> 	 <a href="projects.php?id=<?php echo $projects[$i]['tableId'] ?>" style="display:inline-block;width:16.3%;">
-                         <span style="display:block;"> <img src="admin/uploaded/gallery/<?php echo $ImageName[0] ?>"  alt="<?php echo $projects[$i]['title'] ?>" width="100%" /></span><span style="display:block;height:50px;"><?php echo $projects[$i]['title'] ?></span>
+					               $ImageName=split("@@@",$projects[$i]['images']); ?>
 
-                                                            
-                                                        </a>
-                                <?php }?>
-                               
+                        
+                        <div class="col-md-3 animation fadeIn">
+                            <div class="photo_item">
+                                <div class="project_listing photo_item_preview" id="<?php echo $projects[$i]['tableId'] ?>" style="height: inherit;">
+                                    <a href="projects.php?id=<?php echo $projects[$i]['tableId'] ?>">
+                                        <img src="admin/uploaded/gallery/<?php echo $ImageName[0] ?>"  alt="<?php echo $projects[$i]['title'] ?>" width="100%" />
+                                    </a>
+                                    <div  class="project_title" style="display: none">
+                                        <?php echo $projects[$i]['title'] ?>
+                                    </div>
+                                    <div class="project_description" style="display: none">
+                                        <?php echo $projects[$i]['description'] ?>
+                                    </div>
+                                </div>
                             </div>
-                    	</div>
+                        </div>
+                        <?php } ?>
+                        
+                    	
                     </div>
                     
                     

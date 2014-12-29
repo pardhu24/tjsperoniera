@@ -104,6 +104,28 @@ body {
             $("#show li").click(function(e) {
 				$("#nav_list li").toggle(300);
             });
+            
+           /* $(".project_title").hide();
+            $(".project_description").hide();*/
+            
+            
+            $(".project_listing").each(function() {
+                $(this).hover(function() {                    
+                  // $(this).children().show();
+                  $(this).children().fadeIn(800); 
+                  $(this).find("img").css({"opacity" : "0.2"});
+                }, function() {
+                      $(".project_title, .project_description").hide(); 
+                      $(this).find("img").css({"opacity" : "1"});
+                });
+
+               /* $(this).mouseout(function() {
+                   $(this).children().hide();
+                    //alert($(this).attr("id"));
+                     $(".project_title", this).hide();
+                    $(".project_description", this).hide();          
+                });*/
+            });
         });
         
         </script>
